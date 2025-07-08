@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  discord2feishu:
+    build: .
+    container_name: discord2feishu
+    restart: unless-stopped
+    environment:
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - DISCORD_CHANNEL_ID=${DISCORD_CHANNEL_ID}
+      - FEISHU_WEBHOOK_URL=${FEISHU_WEBHOOK_URL}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    env_file:
+      - .env
+    # 可选：如果需要持久化日志
+    # volumes:
+    #   - ./logs:/app/logs
+    # 日志配置
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

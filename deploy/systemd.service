@@ -1,0 +1,19 @@
+[Unit]
+Description=Discord2Feishu Bot
+After=network.target
+
+[Service]
+Type=simple
+User=app
+WorkingDirectory=/path/to/discord2feishu
+Environment=PATH=/path/to/discord2feishu/.venv/bin
+EnvironmentFile=/path/to/discord2feishu/.env
+ExecStart=/path/to/discord2feishu/.venv/bin/uv run discord2feishu
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=discord2feishu
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,47 @@
+[project]
+name = "discord2feishu"
+version = "0.1.0"
+description = "Discord机器人，监听通知频道并转发到飞书webhook"
+authors = [
+    {name = "Your Name", email = "your.email@example.com"},
+]
+dependencies = [
+    "discord.py>=2.3.2",
+    "httpx>=0.27.0",
+    "python-dotenv>=1.0.0",
+    "loguru>=0.7.2",
+]
+requires-python = ">=3.11"
+license = {text = "MIT"}
+
+[project.scripts]
+discord2feishu = "discord2feishu.main:cli_main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+target-version = "py313"
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4", # flake8-comprehensions
+    "UP", # pyupgrade
+]
+ignore = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.ruff.lint.isort]
+known-first-party = ["discord2feishu"]
